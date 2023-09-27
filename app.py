@@ -12,11 +12,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
+        
+        file = request.files['file']
+        
         # Check if a file was submitted
         if 'file' not in request.files:
             return "No file part"
-        
-        file = request.files['file']
         
         # Check if the file is empty
         if file.filename == '':
